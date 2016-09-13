@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,12 +13,15 @@
  */
 public class Estadistica {
     //1-atributo: Un arreglo uni. de doubles
-    
+    private double numeros[];
     /*
     Constructor:
         Recibe de parametro un valor entero para inicializar el tamaño
         del arreglo de doubles
     */
+    public Estadistica(int longi){
+        numeros = new double[longi];
+    }
     
     //funciones
     
@@ -23,7 +29,11 @@ public class Estadistica {
      * LLENA todo el arreglo con valores del teclado
      */
     public void llenar(){
-        
+        Scanner lea = new Scanner(System.in);
+        for(int n=0; n < numeros.length; n++){
+            System.out.print("["+n+"]: ");
+            numeros[n] = lea.nextDouble();
+        }
     }
     
     /**
@@ -31,7 +41,11 @@ public class Estadistica {
      * @return LA SUMA DE LOS VALORES EN EL ARREGLO
      */
     public double suma(){
-        return 0;
+        double suma = 0;
+        for(double num : numeros){
+            suma += num;
+        }
+        return suma;
     }
     
     /**
@@ -39,7 +53,12 @@ public class Estadistica {
      * @return 
      */
     public double max(){
-        return 0;
+        double mayor=0;//Double.MIN_VALUE;
+        for(int p=0; p < numeros.length; p++){
+            if(p == 0 || numeros[p] > mayor)
+                mayor = numeros[p];
+        }
+        return mayor;
     }
     
     /**
@@ -47,14 +66,21 @@ public class Estadistica {
      * @return 
      */
     public double min(){
-       return 0; 
+       double min=0;//Double.MAX_VALUE;
+        for(int p=0; p < numeros.length; p++){
+            if(p == 0 || numeros[p] < min)
+                min = numeros[p];
+        }
+        return min; 
     }
     
     /**
      * IMPRIMIR todos los elementos del arreglo
      */
     public void list(){
-        
+        for(double num : numeros)
+            System.out.print("["+num+"]");
+        System.out.println("");
     }
 
     /**
@@ -62,7 +88,7 @@ public class Estadistica {
      * @return 
      */
     public double promedio(){
-        return 0;
+        return suma()/numeros.length;
     }
     
     /**
@@ -72,6 +98,13 @@ public class Estadistica {
      * @return 
      */
     public double devStd(){
-        return 0;
+        double prom = promedio();
+        
+        double sum = 0;
+        for(double num : numeros){
+            sum += Math.pow(num-prom, 2);
+        }
+        double total = sum / (numeros.length-1);
+        return Math.sqrt(total);
     }
 }

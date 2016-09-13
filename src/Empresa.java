@@ -32,5 +32,13 @@ public class Empresa {
         }
         
         System.out.println("Pago de Em: "+em.pago());
+        
+        if(em2 != null){
+            System.out.println("NO es nulo!");
+            em2 = null;
+        }
+        
+        Empleado em3 = null; 
+        em3.print();
     }
 }
