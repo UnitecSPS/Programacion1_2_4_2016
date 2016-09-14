@@ -46,10 +46,22 @@ public class Company {
     public boolean contratar(int num, String nom, double sal){
         if(buscar(num) == -1){
             for(int p=0; p < emps.length; p++){
-                
+                if(emps[p] == null){
+                    emps[p] = new Empleado(num, nom, sal);
+                    return true;
+                }
             }
         }
         
         return false;
+    }
+    
+    /**
+     * Imprime los datos del empleado y su pago mensual
+     * SI el empleado existe
+     * @param num Numero del empleado
+     */
+    public void pagarA(int num){
+        
     }
 }
