@@ -62,6 +62,45 @@ public class Company {
      * @param num Numero del empleado
      */
     public void pagarA(int num){
+        int pos = buscar(num);
+        if(pos >= 0){
+            emps[pos].print();
+            System.out.println("Total: "+emps[pos].pago());
+        }
+    }
+    
+    /**
+     * Imprime los datos de TODOS mis empleados
+     */
+    public void print(){
+        for(Empleado em : emps){
+            if(em!=null)
+                em.print();
+        }
+    }
+    
+    /**
+     * Despide un empleado si existe dentro del arreglo
+     * @param num Numero del Empleado
+     * @return true si lo pudo despedir o false si no
+     */
+    public boolean despedir(int num){
+        int pos = buscar(num);
+        if(pos >= 0){
+            emps[pos] = null;
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Actualiza el salario de un empleado siempre y cuando
+     * el nuevo salario sea mayor que el actual.
+     * El empleado debe existir
+     * @param num Numero del empleado
+     * @param newsal Nuevo salario
+     */
+    public void actualizarSalarioDe(int num, double newsal){
         
     }
 }
