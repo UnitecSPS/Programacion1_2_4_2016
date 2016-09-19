@@ -12,6 +12,11 @@ public class TestCompany {
     public static void main(String[] args) {
         Company co = new Company(100);
         
+        
+        menu();
+    }
+
+    private static void menu() {
         /**
          * Hacer un menu que utilize las funciones de Company
          * por medio de co.
