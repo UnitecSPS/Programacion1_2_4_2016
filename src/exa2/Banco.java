@@ -54,4 +54,11 @@ public class Banco {
                 cuenta.depositar( cuenta.getSaldo() * TASA );
         }
     }
+    
+    public void list(double m){
+        for(CuentaBancaria cuenta : cuentas){
+            if(cuenta != null && cuenta.getSaldo() >= m)
+                cuenta.print();
+        }
+    }
 }
